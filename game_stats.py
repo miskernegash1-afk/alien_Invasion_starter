@@ -21,7 +21,7 @@ class GameStats():
         
       
      self.path = self.settings.scores_file
-     if self.path.exists() and self.path.stat().__sizeof__() > 80:
+     if self.path.exists() and self.path.stat().__sizeof__() > 20:
             contents = self.path.read_text()
             if not contents:
                 print ('file empty')
@@ -54,9 +54,9 @@ class GameStats():
         # update score
         self._update_score(collisions)
         #update max_score
-        self._update_max_score()
+        self._update_max_score(collisions)
         #update hi_score
-        self._update_hi_score()
+        self._update_hi_score(collisions)
 
     def _update_max_score(self, collisions):
             if self.score > self.max_score:
