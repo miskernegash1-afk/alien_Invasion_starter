@@ -3,7 +3,7 @@ from pathlib import Path
 class Settings:
 
     def __init__(self) -> None:
-        self.name: str = 'Alien Invasion'
+        self.name: str = 'Frozen Planet Defense - Track 2'
         self.screen_w = 1200
         self.screen_h = 800
         self.FPS = 60
@@ -31,7 +31,7 @@ class Settings:
         self.fleet_direction = 1
         self.fleet_drop_speed = 40
 
-        self.button_w = 200
+        self.button_w = 25
         self.button_h = 50
         self.button_color = (0, 135, 50)
 
