@@ -26,8 +26,9 @@ class AlienInvasion:
         self.bg = pygame.transform.scale(self.bg,
             (self.settings.screen_w, self.settings.screen_h)
             )
-        self .game_stats = GameStats(self)
-        self.hud = HUD(self) 
+        # Final Submission - Disabled for Milestone 1
+        #self .game_stats = GameStats(self)
+        #self.hud = HUD(self) 
         self.running = True
         self.clock = pygame.time.Clock()
         
@@ -39,24 +40,27 @@ class AlienInvasion:
         self.impact_sound.set_volume(0.7)
         
         self.ship = Ship(self, Arsenal(self))
-        self.alien_fleet = AlienFleet(self)
-        self.alien_fleet.create_fleet()
+        # Milestone 2 - Alien fleet disabled
+        #self.alien_fleet = AlienFleet(self)
+        #self.alien_fleet.create_fleet()
         
-        
-        self.play_button = Button(self, 'Play')
-        self.game_active = False
+        # Final Submission - Play button disabled
+        #self.play_button = Button(self, 'Play')
+        self.game_active = True
         
     def run_game(self) -> None:
         # Game loop
-        while self.running:
-            self._check_events()
-            if self.game_active:
-              self.ship.update()
-              self.alien_fleet._check_fleet_edges()
-              self.alien_fleet.fleet.update()
-              self._check_collisions()
-            self._update_screen()
-            self.clock.tick(self.settings.FPS)
+       while self.running:
+        self._check_events()
+
+        if not self.running:
+            break
+
+        self.ship.update()
+        self._update_screen()
+        self.clock.tick(self.settings.FPS)
+
+    pygame.quit()
 
     def _check_collisions(self) -> None:
         if self.ship.check_collisions(self.alien_fleet.fleet):
@@ -118,32 +122,24 @@ class AlienInvasion:
 
      
     def _update_screen(self):
+        """Draw only the custom background, ship, and lasers."""
         self.screen.blit(self.bg, (0, 0))
         self.ship.draw()
-        self.alien_fleet.draw()
-        self.hud.draw()
-
-        if not self.game_active:
-           self.play_button.draw()
-           pygame.mouse.set_visible(True)
-
         pygame.display.flip()
 
-    def _check_events(self):
+    
+    def _check_events(self) -> None:
+        """Handle game window and keyboard events."""
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 self.running = False
-                
-                self.game_stats.save_scores()
 
-                pygame.quit()
-                sys.exit()
-            elif event.type == pygame.KEYDOWN and self.game_active == True:
+            elif event.type == pygame.KEYDOWN:
                 self._check_keydown_events(event)
+
             elif event.type == pygame.KEYUP:
                 self._check_keyup_events(event)
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                self.check_button_clicked()
+
 
     def check_button_clicked(self):
         mouse_pos = pygame.mouse.get_pos()
@@ -168,9 +164,6 @@ class AlienInvasion:
                 self.laser_sound.fadeout(250)
            elif event.key == pygame.K_q:
             self.running = False
-            self.game_stats.save_scores()
-            pygame.quit()
-            sys.exit()
 
 if __name__ == '__main__':
      ai = AlienInvasion()
