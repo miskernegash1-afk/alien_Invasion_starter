@@ -22,9 +22,9 @@ class Settings:
         self.difficulty_scale = 1.1
         self.scores_file = self.base_dir / 'Assets' / 'file' / 'scores.json'
         
-        self.ship_file = self.base_dir / 'Assets' / 'images' / 'ship2(no bg).png'
-        self.ship_w = 40
-        self.ship_h = 60
+        self.ship_file = self.base_dir / 'Assets' / 'images' / 'frozen_ship.png'
+        self.ship_w = 100
+        self.ship_h = 140
         
 
         self.bullet_file = self.base_dir / 'Assets' / 'images' / 'laserBlast.png'
