@@ -28,8 +28,8 @@ class Settings:
         
 
         self.bullet_file = self.base_dir / 'Assets' / 'images' / 'ice_laser.png'
-        self.laser_sound = self.base_dir / 'Assets' / 'sound' / 'laser.mp3'
-        self.impact_sound = self.base_dir / 'Assets' / 'sound' / 'impactSound.mp3'
+        self.laser_sound = self.base_dir / 'Assets' / 'sound' / 'explosion5.OGG'
+        self.impact_sound = self.base_dir / 'Assets' / 'sound' / 'explosion5.OGG'
 
         
     
