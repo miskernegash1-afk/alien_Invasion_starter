@@ -1,3 +1,12 @@
+"""
+Program Name: Frozen Planet Defense - Track 2
+Author: Misker Negash
+Purpose: Create and control custom laser projectiles.
+Starter Code Links: https://github.com/RedBeard41/alien_Invasion_starter
+Date Updated: November 21, 2026
+"""
+
+
 import pygame
 from pygame.sprite import Sprite
 from typing import TYPE_CHECKING
@@ -7,6 +16,7 @@ if TYPE_CHECKING:
 
 
 class Bullet(Sprite):
+    """Represent a laser fired from the player's spaceship."""
     def __init__(self, game: 'AlienInvasion') -> None:
         super().__init__()
         self.screen = game.screen
@@ -20,7 +30,7 @@ class Bullet(Sprite):
 
 
         self.rect = self.image.get_rect()
-        self.rect.midtop = game.ship.rect.midtop
+        self.rect.midbottom = game.ship.rect.midtop
         self.y = float(self.rect.y)
 
     def update(self) -> None:
