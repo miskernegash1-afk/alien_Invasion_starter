@@ -27,7 +27,7 @@ class Settings:
         self.ship_h = 140
         
 
-        self.bullet_file = self.base_dir / 'Assets' / 'images' / 'laserBlast.png'
+        self.bullet_file = self.base_dir / 'Assets' / 'images' / 'ice_laser.png'
         self.laser_sound = self.base_dir / 'Assets' / 'sound' / 'laser.mp3'
         self.impact_sound = self.base_dir / 'Assets' / 'sound' / 'impactSound.mp3'
 
