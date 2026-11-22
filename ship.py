@@ -27,9 +27,13 @@ class Ship:
         self.moving_left = False
         self.arsenal = arsenal
 
-    def _center_ship(self):
-        self.rect.midbottom = self.boundaries.midbottom
-        self.x = float(self.rect.x)
+    def _center_ship(self) -> None:
+     """Position the spaceship slightly above the bottom of the screen."""
+     self.rect.midbottom = (
+        self.boundaries.centerx,
+        self.boundaries.bottom - 30
+    )
+     self.x = float(self.rect.x)
     def update(self) -> None:
     # updating the position of the ship
      self._update_ship_movement()
