@@ -1,30 +1,40 @@
+"""
+Program Name: Frozen Planet Defense - Track 2
+Author: Misker Negash
+Purpose: Store game settings and custom asset file paths.
+Starter Code Links: Add your actual course starter-code URL.
+Date Updated: November 21, 2026
+"""
 from pathlib import Path
 
 class Settings:
-
+    """Store configuration settings for Frozen Planet Defense."""
     def __init__(self) -> None:
+         
+        """Initialize the game settings and asset paths."""
+        self.base_dir = Path(__file__).resolve().parent
         self.name: str = 'Frozen Planet Defense - Track 2'
         self.screen_w = 1200
         self.screen_h = 800
         self.FPS = 60
-        self.bg_file = Path.cwd() / 'Assets' / 'images' / 'Starbasesnow.png'
+        self.bg_file = self.base_dir / 'Assets' / 'images' / 'Starbasesnow.png'
         
         self.difficulty_scale = 1.1
-        self.scores_file = Path.cwd() / 'Assets' / 'file' / 'scores.json'
+        self.scores_file = self.base_dir / 'Assets' / 'file' / 'scores.json'
         
-        self.ship_file = Path.cwd() / 'Assets' / 'images' / 'ship2(no bg).png'
+        self.ship_file = self.base_dir / 'Assets' / 'images' / 'ship2(no bg).png'
         self.ship_w = 40
         self.ship_h = 60
         
 
-        self.bullet_file = Path.cwd() / 'Assets' / 'images' / 'laserBlast.png'
-        self.laser_sound = Path.cwd() / 'Assets' / 'sound' / 'laser.mp3'
-        self.impact_sound = Path.cwd() / 'Assets' / 'sound' / 'impactSound.mp3'
+        self.bullet_file = self.base_dir / 'Assets' / 'images' / 'laserBlast.png'
+        self.laser_sound = self.base_dir / 'Assets' / 'sound' / 'laser.mp3'
+        self.impact_sound = self.base_dir / 'Assets' / 'sound' / 'impactSound.mp3'
 
         
     
         
-        self.alien_file = Path.cwd() / 'Assets' / 'images' / 'enemy_4.png'
+        self.alien_file = self.base_dir / 'Assets' / 'images' / 'enemy_4.png'
         self.alien_w = 40
         self.alien_h = 40
         self.fleet_speed = 2
@@ -38,7 +48,7 @@ class Settings:
         self.text_color = (255, 255, 255)
         self.button_font_size = 48
         self.HUD_font_size = 20
-        self.font_file = Path.cwd() / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
+        self.font_file = self.base_dir / 'Assets' / 'Fonts' / 'Silkscreen' / 'Silkscreen-Bold.ttf'
         
     def initialize_dynamic_settings(self) -> None:
         self.ship_speed = 5
