@@ -17,7 +17,7 @@ class Settings:
         self.screen_w = 1200
         self.screen_h = 800
         self.FPS = 60
-        self.bg_file = self.base_dir / 'Assets' / 'images' / 'Starbasesnow.png'
+        self.bg_file = self.base_dir / 'Assets' / 'images' / 'frozen_background.png'
         
         self.difficulty_scale = 1.1
         self.scores_file = self.base_dir / 'Assets' / 'file' / 'scores.json'
