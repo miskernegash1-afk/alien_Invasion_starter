@@ -21,6 +21,7 @@ class AlienInvasion:
 
     def __init__(self) -> None:
         pygame.init()
+        # Milestone 2: Create the V-shaped alien fleet.
         self.settings = Settings()
         self.settings.initialize_dynamic_settings()
        # self .game_stats = GameStats(self)
@@ -48,6 +49,8 @@ class AlienInvasion:
         self.impact_sound.set_volume(0.7)
         
         self.ship = Ship(self, Arsenal(self))
+        # Milestone 2: Create the V-shaped alien fleet.
+        self.alien_fleet = AlienFleet(self)
         # Milestone 2 - Alien fleet disabled
         #self.alien_fleet = AlienFleet(self)
         #self.alien_fleet.create_fleet()
@@ -65,6 +68,8 @@ class AlienInvasion:
             break
 
         self.ship.update()
+        # Milestone 2: Update fleet movement.
+        self.alien_fleet.update_fleet()
         self._update_screen()
         self.clock.tick(self.settings.FPS)
 
@@ -133,6 +138,9 @@ class AlienInvasion:
         """Draw only the custom background, ship, and lasers."""
         self.screen.blit(self.bg, (0, 0))
         self.ship.draw()
+        # Milestone 2: Display the V-shaped aliens.
+        self.alien_fleet.draw()
+
         pygame.display.flip()
 
     
