@@ -18,16 +18,41 @@ class AlienFleet:
 
         self.create_fleet()
 
-    def create_fleet(self) -> None:
-        alien_w = self.settings.alien_w
-        alien_h = self.settings.alien_h
-        screen_w = self.settings.screen_w
-        screen_h = self.settings.screen_h
-        
-        fleet_w, fleet_h = self.calculate_fleet_size(alien_w, screen_w, alien_h, screen_h)
-        x_offset, y_offset = self.calculate_offset(alien_w, alien_h, screen_w, fleet_w, fleet_h)
+    
+def create_fleet(self) -> None:
+    """Create a V-shaped alien fleet for Milestone 2."""
 
-        self._create_rectangle_fleet(alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset)
+    self.fleet.empty()
+
+    center_x = self.settings.screen_w // 2
+    start_y = 90
+
+    x_spacing = self.settings.alien_w * 2
+    y_spacing = self.settings.alien_h * 2
+
+    rows = 6
+
+    for row in range(rows):
+        current_y = start_y + row * y_spacing
+
+        if row == 0:
+            self._create_alien(
+                center_x - self.settings.alien_w // 2,
+                current_y
+            )
+        else:
+            left_x = center_x - row * x_spacing
+            right_x = center_x + row * x_spacing
+
+            self._create_alien(
+                left_x - self.settings.alien_w // 2,
+                current_y
+            )
+
+            self._create_alien(
+                right_x - self.settings.alien_w // 2,
+                current_y
+            )
 
     def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
         for row in range(fleet_h):
@@ -96,3 +121,4 @@ class AlienFleet:
      return False
     def check_destroyed_status(self) :
      return not self.fleet
+    

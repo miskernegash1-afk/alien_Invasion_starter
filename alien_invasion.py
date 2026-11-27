@@ -1,3 +1,11 @@
+"""
+Program Name: Frozen Planet Defense - Track 2
+Author: Misker Negash
+Purpose: Manage the main game loop, spaceship movement, and custom assets.
+Starter Code Links: https://github.com/RedBeard41/alien_Invasion_starter
+Date Updated: November 22, 2026
+"""
+
 import sys
 import pygame
 from settings import Settings
@@ -36,7 +44,7 @@ class AlienInvasion:
         self.laser_sound = pygame.mixer.Sound(self.settings.laser_sound)
         self.laser_sound.set_volume(0.7)
 
-        self.impact_sound = pygame.mixer.Sound(self.settings.impact_sound)
+        self.impact_sound = pygame.mixer.Sound(str(self.settings.impact_sound))
         self.impact_sound.set_volume(0.7)
         
         self.ship = Ship(self, Arsenal(self))
