@@ -45,3 +45,41 @@ class Alien(Sprite):
 
     def draw_alien(self) -> None:
         self.screen.blit(self.image, self.rect)
+        self._draw_ice_explosion()
+
+    def _draw_ice_explosion(self) -> None:
+        """Draw a pulsing blue explosion below an active alien."""
+        phase = (pygame.time.get_ticks() // 150) % 2
+
+        center_x = self.rect.centerx
+        center_y = self.rect.bottom + 10
+
+        radius = 5 if phase == 0 else 9
+        color = (70, 210, 255)
+
+        # Draw the glowing explosion ring.
+        pygame.draw.circle(
+            self.screen,
+            color,
+            (center_x, center_y),
+            radius,
+            2
+        )
+
+        # Draw horizontal energy sparks.
+        pygame.draw.line(
+            self.screen,
+            color,
+            (center_x - radius - 5, center_y),
+            (center_x + radius + 5, center_y),
+            2
+        )
+
+        # Draw vertical energy sparks.
+        pygame.draw.line(
+            self.screen,
+            color,
+            (center_x, center_y - radius - 5),
+            (center_x, center_y + radius + 5),
+            2
+        )
