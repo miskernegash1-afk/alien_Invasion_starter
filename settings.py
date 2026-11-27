@@ -34,7 +34,7 @@ class Settings:
         
     
         
-        self.alien_file = self.base_dir / 'Assets' / 'images' / 'enemy_4.png'
+        self.alien_file = self.base_dir / 'Assets' / 'images' / "frozen_enemy.png"
         self.alien_w = 40
         self.alien_h = 40
         self.fleet_speed = 2
