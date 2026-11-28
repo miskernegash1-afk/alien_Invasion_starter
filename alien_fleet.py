@@ -18,18 +18,18 @@ class AlienFleet:
         self.create_fleet()
 
     
+    
     def create_fleet(self) -> None:
-        """Create a V-shaped alien fleet for Milestone 2."""
-
+        """Create a large V-shaped fleet of 25 alien spaceships."""
         self.fleet.empty()
 
         center_x = self.settings.screen_w // 2
-        start_y = 90
+        start_y = 75
 
-        x_spacing = self.settings.alien_w * 2
-        y_spacing = self.settings.alien_h * 2
-
-        rows = 6
+        rows = 7
+        x_spacing = 55
+        y_spacing = 60
+        arm_gap = 52
 
         for row in range(rows):
             current_y = start_y + row * y_spacing
@@ -40,18 +40,20 @@ class AlienFleet:
                     current_y
                 )
             else:
-                left_x = center_x - row * x_spacing
-                right_x = center_x + row * x_spacing
+                inner_offset = row * x_spacing
+                outer_offset = inner_offset + arm_gap
 
-                self._create_alien(
-                    left_x - self.settings.alien_w // 2,
-                    current_y
-                )
+                for offset in (inner_offset, outer_offset):
+                    self._create_alien(
+                        center_x - offset - self.settings.alien_w // 2,
+                        current_y
+                    )
 
-                self._create_alien(
-                    right_x - self.settings.alien_w // 2,
-                    current_y
-                )
+                    self._create_alien(
+                        center_x + offset - self.settings.alien_w // 2,
+                        current_y
+                    )
+
 
     def _create_rectangle_fleet(self, alien_w, alien_h, fleet_w, fleet_h, x_offset, y_offset):
         for row in range(fleet_h):
